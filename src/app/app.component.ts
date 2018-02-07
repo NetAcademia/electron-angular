@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-
-// import { shell } from 'electron';
-// const { shell } = require('electron');
-// const { shell } = window.require('electron');
-const { shell } = (<any>window).require('electron');
-
+import { ElectronService } from 'ngx-electron';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +9,9 @@ const { shell } = (<any>window).require('electron');
 export class AppComponent {
   title = 'app';
 
+constructor(private electronService: ElectronService) {}
+
   openPage() {
-    shell.openExternal('http://netacademia.hu');
+      this.electronService.shell.openExternal('http://netacademia.hu');
   }
 }
