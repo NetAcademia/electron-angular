@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NgxElectronModule } from 'ngx-electron';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatToolbarModule} from '@angular/material';
+import {StoreModule} from '@ngrx/store';
+import {helloReducer} from './hello.reducer';
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import {MatButtonModule, MatToolbarModule} from '@angular/material';
     NgxElectronModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    StoreModule.forRoot( {message: helloReducer} )
   ],
   providers: [],
   bootstrap: [AppComponent]
