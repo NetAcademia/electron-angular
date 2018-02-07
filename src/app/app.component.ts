@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ElectronService } from 'ngx-electron';
+import {Component} from '@angular/core';
+import {ElectronService} from 'ngx-electron';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,10 @@ import { ElectronService } from 'ngx-electron';
 export class AppComponent {
   title = 'app';
 
-constructor(private electronService: ElectronService) {}
+  constructor(private electronService: ElectronService) {
+  }
 
   openPage() {
-      this.electronService.shell.openExternal('http://netacademia.hu');
+    this.electronService.shell.openExternal('http://netacademia.hu');
   }
 }

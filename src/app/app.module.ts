@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NgxElectronModule } from 'ngx-electron';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatToolbarModule} from '@angular/material';
 
 
 @NgModule({
@@ -12,7 +14,10 @@ import { NgxElectronModule } from 'ngx-electron';
   ],
   imports: [
     BrowserModule,
-    NgxElectronModule
+    NgxElectronModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
