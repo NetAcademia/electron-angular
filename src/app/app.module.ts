@@ -1,13 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
 
-import { AppComponent } from './app.component';
-import { NgxElectronModule } from 'ngx-electron';
+import {AppComponent} from './app.component';
+import {NgxElectronModule} from 'ngx-electron';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatToolbarModule} from '@angular/material';
 import {StoreModule} from '@ngrx/store';
 import {helloReducer} from './hello.reducer';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -20,9 +21,13 @@ import {helloReducer} from './hello.reducer';
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
-    StoreModule.forRoot( {message: helloReducer} )
+    StoreModule.forRoot({message: helloReducer}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
