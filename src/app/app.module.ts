@@ -13,6 +13,8 @@ import {AngularFireModule} from 'angularfire2';
 import {environment} from '../environments/environment';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {postReducer} from './reducers/post.reducer';
+import {PostEffects} from './effects/post.effects';
+import {EffectsModule} from '@ngrx/effects';
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import {postReducer} from './reducers/post.reducer';
     MatCardModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    EffectsModule.forRoot([PostEffects]),
     StoreModule.forRoot({
       message: helloReducer,
       post: postReducer
