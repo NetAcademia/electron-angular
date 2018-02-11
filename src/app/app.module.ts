@@ -9,6 +9,9 @@ import {MatButtonModule, MatToolbarModule} from '@angular/material';
 import {StoreModule} from '@ngrx/store';
 import {helloReducer} from './hello.reducer';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {AngularFireModule} from 'angularfire2';
+import {environment} from '../environments/environment';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
 
 
 @NgModule({
@@ -21,6 +24,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     StoreModule.forRoot({message: helloReducer}),
     StoreDevtoolsModule.instrument({
       maxAge: 25

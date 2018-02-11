@@ -30,6 +30,6 @@ export class AppComponent {
   }
 
   openPage() {
-    this.electronService.shell.openExternal('http://netacademia.hu');
+    (<any>this.electronService.shell).openExternal('http://netacademia.hu');
   }
 }
