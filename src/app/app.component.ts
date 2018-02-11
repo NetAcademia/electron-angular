@@ -14,22 +14,38 @@ interface AppState {
 })
 export class AppComponent {
   messages$: Observable<string>;
+  private p: { text: string; votes: number };
 
   constructor(private electronService: ElectronService, private store: Store<AppState>) {
     this.messages$ = this.store.select('message');
+    this.p = {
+      text: 'hutyutyu',
+      votes: 5
+    };
+  }
+
+  loadPost() {
+
+  }
+
+  vote(p: { text: string; votes: number }, number: number) {
+
   }
 
   engMessage() {
-    this.store.dispatch( { type: 'ENG' } );
+    this.store.dispatch({type: 'ENG'});
   }
+
   hunMessage() {
-    this.store.dispatch( { type: 'HUN' } );
+    this.store.dispatch({type: 'HUN'});
   }
+
   resetMessage() {
-    this.store.dispatch( { type: 'RESET' } );
+    this.store.dispatch({type: 'RESET'});
   }
 
   openPage() {
     (<any>this.electronService.shell).openExternal('http://netacademia.hu');
   }
+
 }
