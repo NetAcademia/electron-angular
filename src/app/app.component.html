@@ -3,14 +3,17 @@
     <span>Hello vilag Nini itt vagyok</span>
   </mat-toolbar>
   <div *ngIf="post$ | async as p">
-    <mat-card>
-      <mat-card-title>{{ p.text }}</mat-card-title>
-      <mat-card-subtitle>{{ p.votes }}</mat-card-subtitle>
-      <mat-card-actions>
-        <button mat-raised-button color="accent" (click)="vote(p, 1)">Upvote</button>
-        <button mat-raised-button color="warn" (click)="vote(p, -1)">Downvote</button>
-      </mat-card-actions>
-    </mat-card>
+    <div *ngIf="p.loading; else loaded">Loading...</div>
+    <ng-template #loaded>
+      <mat-card>
+        <mat-card-title>{{ p.text }}</mat-card-title>
+        <mat-card-subtitle>{{ p.votes }}</mat-card-subtitle>
+        <mat-card-actions>
+          <button mat-raised-button color="accent" (click)="vote(p, 1)">Upvote</button>
+          <button mat-raised-button color="warn" (click)="vote(p, -1)">Downvote</button>
+        </mat-card-actions>
+      </mat-card>
+    </ng-template>
   </div>
   <button mat-raised-button color="primary" (click)="loadPost()">Load post from firebase</button>
   <hr>
