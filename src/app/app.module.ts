@@ -12,6 +12,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {AngularFireModule} from 'angularfire2';
 import {environment} from '../environments/environment';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {postReducer} from './reducers/post.reducer';
 
 
 @NgModule({
@@ -27,7 +28,10 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
     MatCardModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    StoreModule.forRoot({message: helloReducer}),
+    StoreModule.forRoot({
+      message: helloReducer,
+      post: postReducer
+    }),
     StoreDevtoolsModule.instrument({
       maxAge: 25
     })

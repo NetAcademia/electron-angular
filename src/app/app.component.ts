@@ -2,9 +2,12 @@ import {Component} from '@angular/core';
 import {ElectronService} from 'ngx-electron';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
+import {Post} from './models/post.model';
+import {GetPost} from './actions/post.actions';
 
 interface AppState {
   message: string;
+  post: Post;
 }
 
 @Component({
@@ -14,21 +17,18 @@ interface AppState {
 })
 export class AppComponent {
   messages$: Observable<string>;
-  private p: { text: string; votes: number };
+  post$: Observable<Post>;
 
   constructor(private electronService: ElectronService, private store: Store<AppState>) {
     this.messages$ = this.store.select('message');
-    this.p = {
-      text: 'hutyutyu',
-      votes: 5
-    };
+    this.post$ = this.store.select('post');
   }
 
   loadPost() {
-
+    this.store.dispatch(new GetPost('asdfsda'));
   }
 
-  vote(p: { text: string; votes: number }, number: number) {
+  vote(p: Post, number: number) {
 
   }
 
