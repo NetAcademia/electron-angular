@@ -3,19 +3,23 @@ import {Actions, Effect} from '@ngrx/effects';
 import {Observable} from 'rxjs/Observable';
 import {Action} from '@ngrx/store';
 import {GET_POST, GetPost, GetPostSucces} from '../actions/post.actions';
-import {AngularFireDatabase} from 'angularfire2/database';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {Post} from '../models/post.model';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PostEffects {
 
   @Effect()
   getPost: Observable<Action> = this.actions.ofType(GET_POST)
-    .map((action: GetPost) => new GetPostSucces(
-      {text: action.payload, votes: 5}
-    ))
-    .delay(1500)
+    .switchMap((action: GetPost) =>
+      this.http.get<Post>(environment.firebase.databaseURL + action.payload)
+    )
+    .map(resp => new GetPostSucces(resp))
   ;
 
-  constructor(private actions: Actions, private db: AngularFireDatabase) {
+  constructor(private actions: Actions, private http: HttpClient) {
   }
 }

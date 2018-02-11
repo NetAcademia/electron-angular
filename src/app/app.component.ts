@@ -25,7 +25,7 @@ export class AppComponent {
   }
 
   loadPost() {
-    this.store.dispatch(new GetPost('asdfsda'));
+    this.store.dispatch(new GetPost('/posts/testPost.json'));
   }
 
   vote(p: Post, number: number) {

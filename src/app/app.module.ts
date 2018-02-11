@@ -9,12 +9,10 @@ import {MatButtonModule, MatCardModule, MatToolbarModule} from '@angular/materia
 import {StoreModule} from '@ngrx/store';
 import {helloReducer} from './reducers/hello.reducer';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {AngularFireModule} from 'angularfire2';
-import {environment} from '../environments/environment';
-import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {postReducer} from './reducers/post.reducer';
 import {PostEffects} from './effects/post.effects';
 import {EffectsModule} from '@ngrx/effects';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -23,13 +21,12 @@ import {EffectsModule} from '@ngrx/effects';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     NgxElectronModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
     MatCardModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
     EffectsModule.forRoot([PostEffects]),
     StoreModule.forRoot({
       message: helloReducer,
