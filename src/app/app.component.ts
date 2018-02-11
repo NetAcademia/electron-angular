@@ -3,7 +3,7 @@ import {ElectronService} from 'ngx-electron';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {Post} from './models/post.model';
-import {GetPost} from './actions/post.actions';
+import {GetPost, VoteUpdate} from './actions/post.actions';
 
 interface AppState {
   message: string;
@@ -28,8 +28,14 @@ export class AppComponent {
     this.store.dispatch(new GetPost('/posts/testPost.json'));
   }
 
-  vote(p: Post, number: number) {
-
+  vote(p: Post, change: number) {
+    this.store.dispatch(new VoteUpdate({
+      path: '/posts/testPost.json',
+      post: {
+        ...p,
+        votes: p.votes + change
+      }
+    }));
   }
 
   engMessage() {
