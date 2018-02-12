@@ -9,6 +9,7 @@ import {MatButtonModule, MatCardModule, MatToolbarModule} from '@angular/materia
 import {StoreModule} from '@ngrx/store';
 import {helloReducer} from './reducers/hello.reducer';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {postReducer} from './reducers/post.reducer';
 
 
 @NgModule({
@@ -22,7 +23,10 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
     MatButtonModule,
     MatToolbarModule,
     MatCardModule,
-    StoreModule.forRoot({message: helloReducer}),
+    StoreModule.forRoot({
+      message: helloReducer,
+      post: postReducer
+    }),
     StoreDevtoolsModule.instrument({
       maxAge: 25
     })
