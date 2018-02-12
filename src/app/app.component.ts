@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ElectronService} from 'ngx-electron';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
-import {GetPost} from './actions/post.actions';
+import {GetPost, VoteUpdate} from './actions/post.actions';
 import {Post} from './reducers/post.reducer';
 
 interface AppState {
@@ -42,5 +42,15 @@ export class AppComponent {
 
   openPage() {
     (<any>this.electronService.shell).openExternal('http://netacademia.hu');
+  }
+
+  vote(p: Post, change: number) {
+    this.store.dispatch(new VoteUpdate({
+      path: '/posts/testPost.json',
+      post: {
+        ...p,
+        votes: p.votes + change
+      }
+    }));
   }
 }

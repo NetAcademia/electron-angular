@@ -9,8 +9,8 @@
       <ng-template #loaded>
         <mat-card-title>{{ p.text }}</mat-card-title>
         <mat-card-subtitle>{{ p.votes }}</mat-card-subtitle>
-        <button mat-raised-button color="accent">Upvote</button>
-        <button mat-raised-button color="warn">Downvote</button>
+        <button mat-raised-button color="accent" (click)="vote(p, 1)">Upvote</button>
+        <button mat-raised-button color="warn" (click)="vote(p, -1)">Downvote</button>
       </ng-template>
     </mat-card>
   </div>
