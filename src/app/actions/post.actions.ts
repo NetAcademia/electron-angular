@@ -22,4 +22,5 @@ export class GetPostSucces implements Action {
 
 export type PostActions
   = GetPost
+  | GetPostSucces
   ;

@@ -25,7 +25,7 @@ export class AppComponent {
   }
 
   loadPost() {
-    this.store.dispatch(new GetPost('Sebaj Tobias'));
+    this.store.dispatch(new GetPost('/posts/testPost.json'));
   }
 
   engMessage() {

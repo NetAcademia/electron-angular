@@ -12,6 +12,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {postReducer} from './reducers/post.reducer';
 import {PostEffects} from './effects/post.effects';
 import {EffectsModule} from '@ngrx/effects';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {EffectsModule} from '@ngrx/effects';
     MatButtonModule,
     MatToolbarModule,
     MatCardModule,
+    HttpClientModule,
     StoreModule.forRoot({
       message: helloReducer,
       post: postReducer
