@@ -1,5 +1,9 @@
 import {GET_POST, PostActions} from '../actions/post.actions';
-import {Post} from '../models/post.model';
+
+export interface Post {
+  text: string;
+  votes: number;
+}
 
 const initPoststate = {
   text: 'Szent habakuk',
