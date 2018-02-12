@@ -3,6 +3,14 @@
   <mat-toolbar color="primary">
     <span>Hello vilag Nini itt vagyok</span>
   </mat-toolbar>
+  <mat-card>
+    <mat-card-title>{{ p.text }}</mat-card-title>
+    <mat-card-subtitle>{{ p.votes }}</mat-card-subtitle>
+    <button mat-raised-button color="accent">Upvote</button>
+    <button mat-raised-button color="warn">Downvote</button>
+  </mat-card>
+  <button mat-raised-button>Load post</button>
+  <hr>
   <h1 class="mat-display-1">
     {{ messages$ | async }}
   </h1>

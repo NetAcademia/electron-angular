@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ElectronService} from 'ngx-electron';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
+import {Post} from './models/post.model';
 
 interface AppState {
   message: string;
@@ -14,9 +15,14 @@ interface AppState {
 })
 export class AppComponent {
   messages$: Observable<string>;
+  p: Post;
 
   constructor(private electronService: ElectronService, private store: Store<AppState>) {
     this.messages$ = this.store.select('message');
+    this.p = {
+      text: 'hutyutyu',
+      votes: 5
+    };
   }
 
   engMessage() {
@@ -30,6 +36,6 @@ export class AppComponent {
   }
 
   openPage() {
-    this.electronService.shell.openExternal('http://netacademia.hu');
+    (<any>this.electronService.shell).openExternal('http://netacademia.hu');
   }
 }
