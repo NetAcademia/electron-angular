@@ -10,6 +10,8 @@ import {StoreModule} from '@ngrx/store';
 import {helloReducer} from './reducers/hello.reducer';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {postReducer} from './reducers/post.reducer';
+import {PostEffects} from './effects/post.effects';
+import {EffectsModule} from '@ngrx/effects';
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import {postReducer} from './reducers/post.reducer';
       message: helloReducer,
       post: postReducer
     }),
+    EffectsModule.forRoot([PostEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25
     })

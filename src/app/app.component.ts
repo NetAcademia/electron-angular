@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {ElectronService} from 'ngx-electron';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
-import {Post} from './models/post.model';
 import {GetPost} from './actions/post.actions';
+import {Post} from './reducers/post.reducer';
 
 interface AppState {
   message: string;
@@ -29,13 +29,15 @@ export class AppComponent {
   }
 
   engMessage() {
-    this.store.dispatch( { type: 'ENG' } );
+    this.store.dispatch({type: 'ENG'});
   }
+
   hunMessage() {
-    this.store.dispatch( { type: 'HUN' } );
+    this.store.dispatch({type: 'HUN'});
   }
+
   resetMessage() {
-    this.store.dispatch( { type: 'RESET' } );
+    this.store.dispatch({type: 'RESET'});
   }
 
   openPage() {
